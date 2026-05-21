@@ -11,6 +11,9 @@ The main focus was on using:
 - ORDER BY
 - LIMIT
 - DISTINCT
+- COUNT
+- GROUP BY
+- EXPLAIN
 
 The queries were written and stored in:
 
@@ -189,6 +192,56 @@ Another example:
 `SELECT DISTINCT category FROM products;`
 
 This helped me identify the available product categories.
+
+---
+
+### COUNT
+
+COUNT was used to count how many rows exist in a table or inside a group.
+
+Example:
+
+`SELECT COUNT(*) AS total_customers FROM customers;`
+
+This query counts the total number of customers in the customers table.
+
+COUNT(*) means count all rows in the result.
+
+This helped me confirm how many records were loaded into each PostgreSQL table.
+
+---
+
+### GROUP BY with COUNT
+
+GROUP BY was used with COUNT to summarize data by city, category, status, payment method, or payment status.
+
+Example:
+
+`SELECT city, COUNT(*) AS total_customers FROM customers GROUP BY city;`
+
+This query groups customers by city and counts how many customers are in each city.
+
+Another example:
+
+`SELECT status, COUNT(*) AS total_orders FROM orders GROUP BY status;`
+
+This query groups orders by status and counts how many orders exist for each status.
+
+This helped me turn raw table data into useful summary information.
+
+---
+
+### AS
+
+AS was used to give a temporary name to a result column.
+
+Example:
+
+`COUNT(*) AS total_orders`
+
+This means the result column will be shown as total_orders instead of count.
+
+Using AS makes query outputs easier to read and understand.
 
 ---
 
@@ -378,13 +431,71 @@ This helps identify the largest payments in the system.
 
 ---
 
-### Daily Transaction Amount
+### Total Records in Each Table
 
-I grouped transactions by transaction date and calculated the total amount per day.
+I used COUNT(*) to count the total number of records in each table.
+
+The count queries checked:
+
+- Total number of customers
+- Total number of products
+- Total number of orders
+- Total number of order items
+- Total number of transactions
 
 Insight:
 
-This helps understand payment activity over time.
+This helped confirm that the data was loaded successfully into PostgreSQL and helped me understand the size of each table.
+
+---
+
+### Customers by City Count
+
+I used GROUP BY with COUNT to count how many customers exist in each city.
+
+Insight:
+
+This helps understand customer distribution by location.
+
+---
+
+### Products by Category Count
+
+I used GROUP BY with COUNT to count how many products exist in each category.
+
+Insight:
+
+This helps understand the product catalog structure and how products are distributed across categories.
+
+---
+
+### Orders by Status Count
+
+I used GROUP BY with COUNT to count how many orders exist for each order status.
+
+Insight:
+
+This helps understand how many orders are completed, pending, cancelled, or in other states.
+
+---
+
+### Transactions by Payment Method Count
+
+I used GROUP BY with COUNT to count how many transactions exist for each payment method.
+
+Insight:
+
+This helps understand which payment methods are used in the dataset.
+
+---
+
+### Transactions by Payment Status Count
+
+I used GROUP BY with COUNT to count how many transactions exist for each payment status.
+
+Insight:
+
+This helps understand how many transactions were successful, failed, or in another payment state.
 
 ---
 
@@ -406,15 +517,13 @@ This is useful later when working with larger datasets and trying to understand 
 
 In this dataset, date columns such as order_date and transaction_date are stored as text.
 
-Because of that, when I wanted to group by date, I used casting:
+Because of that, when I wanted to group orders by date, I used casting:
 
 `order_date::timestamp`
 
-and:
-
-`transaction_date::timestamp`
-
 This converts the text value into a timestamp so PostgreSQL can treat it like a real date/time value.
+
+This was useful when analyzing daily orders.
 
 ---
 
@@ -422,6 +531,8 @@ This converts the text value into a timestamp so PostgreSQL can treat it like a 
 
 In this task, I practiced writing basic SQL queries to explore and analyze data from PostgreSQL.
 
-I learned how to select columns, filter rows, sort results, limit outputs, find unique values, and understand query execution conceptually.
+I learned how to select columns, filter rows, sort results, limit outputs, find unique values, count records, group data, and understand query execution conceptually.
 
 This task helped me move from loading data into the database to analyzing and understanding the data using SQL.
+
+I also learned that SQL is not only used to display rows from a table. It can also summarize data and produce useful insights using COUNT, GROUP BY, DISTINCT, and ORDER BY.

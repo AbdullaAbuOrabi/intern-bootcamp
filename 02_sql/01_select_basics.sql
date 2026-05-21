@@ -309,3 +309,94 @@ SELECT customer_id, first_name, email, city, signup_date
 FROM customers
 ORDER BY signup_date DESC
 LIMIT 10;
+
+
+-- ============================================================
+-- 31. Count total customers
+-- ============================================================
+
+SELECT COUNT(*) AS total_customers
+FROM customers;
+
+
+-- ============================================================
+-- 32. Count total products
+-- ============================================================
+
+SELECT COUNT(*) AS total_products
+FROM products;
+
+
+-- ============================================================
+-- 33. Count total orders
+-- ============================================================
+
+SELECT COUNT(*) AS total_orders
+FROM orders;
+
+
+-- ============================================================
+-- 34. Count total order items
+-- ============================================================
+
+SELECT COUNT(*) AS total_order_items
+FROM order_items;
+
+
+-- ============================================================
+-- 35. Count total transactions
+-- ============================================================
+
+SELECT COUNT(*) AS total_transactions
+FROM transactions;
+
+
+-- ============================================================
+-- 36. Count customers by city
+-- ============================================================
+
+SELECT city,
+       COUNT(*) AS total_customers
+FROM customers
+GROUP BY city
+ORDER BY total_customers DESC;
+
+-- ============================================================
+-- 37. Count products by category
+-- ============================================================
+
+SELECT category,
+       COUNT(*) AS total_products
+FROM products
+GROUP BY category
+ORDER BY total_products DESC;
+
+-- ============================================================
+-- 38. Count orders by status
+-- ============================================================
+
+SELECT status,
+       COUNT(*) AS total_orders
+FROM orders
+GROUP BY status
+ORDER BY total_orders DESC;
+
+-- ============================================================
+-- 39. Count transactions by payment method
+-- ============================================================
+
+SELECT payment_method,
+       COUNT(*) AS total_transactions
+FROM transactions
+GROUP BY payment_method
+ORDER BY total_transactions DESC;
+
+-- ============================================================
+-- 40. Count transactions by payment status
+-- ============================================================
+
+SELECT payment_status,
+       COUNT(*) AS total_transactions
+FROM transactions
+GROUP BY payment_status
+ORDER BY total_transactions DESC;
