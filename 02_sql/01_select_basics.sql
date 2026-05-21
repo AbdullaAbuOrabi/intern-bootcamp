@@ -400,3 +400,23 @@ SELECT payment_status,
 FROM transactions
 GROUP BY payment_status
 ORDER BY total_transactions DESC;
+
+-- ============================================================
+-- 41. Calculate total transaction amount
+-- SUM adds all numeric values in the amount column.
+-- ============================================================
+
+SELECT SUM(amount) AS total_transaction_amount
+FROM transactions;
+
+-- ============================================================
+-- 42. Calculate total sales by product
+-- SUM adds total_price for each product_id.
+-- GROUP BY groups the rows by product.
+-- ============================================================
+
+SELECT product_id,
+       SUM(total_price) AS total_sales
+FROM order_items
+GROUP BY product_id
+ORDER BY total_sales DESC;
