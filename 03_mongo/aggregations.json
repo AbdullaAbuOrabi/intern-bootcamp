@@ -1,0 +1,44 @@
+{
+    "sales_by_product_category": [
+        {
+            "$match": {
+                "event_type": "purchase"
+            }
+        },
+        {
+            "$lookup": {
+                "from": "products",
+                "localField": "product_id",
+                "foreignField": "product_id",
+                "as": "product_details"
+            }
+        },
+        {
+            "$unwind": "$product_details"
+        },
+        {
+            "$group": {
+                "_id": "$product_details.category",
+                "number_of_purchases": {
+                    "$sum": 1
+                },
+                "estimated_sales_value": {
+                    "$sum": "$product_details.price"
+                }
+            }
+        },
+        {
+            "$project": {
+                "_id": 0,
+                "category": "$_id",
+                "number_of_purchases": 1,
+                "estimated_sales_value": 1
+            }
+        },
+        {
+            "$sort": {
+                "estimated_sales_value": -1
+            }
+        }
+    ]
+}
