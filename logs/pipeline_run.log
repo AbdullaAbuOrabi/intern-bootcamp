@@ -1,0 +1,64 @@
+def run_pipeline():
+    print("Pipeline started...")
+    logging.info("========== Pipeline started ==========")
+
+    customers_df = extract_customers()
+    print("Customers extracted")
+
+    validation_errors = validate_customers(customers_df)
+    print("Customers validated")
+
+    clean_customers_df = transform_customers(customers_df)
+    print("Customers transformed")
+
+    load_customers(clean_customers_df)
+    print("Customers saved as Parquet")
+
+    logging.info(f"Total rows processed: {len(clean_customers_df)}")
+    logging.info(f"Total validation errors: {validation_errors}")
+    logging.info("========== Pipeline finished ==========")
+
+    print("Pipeline finished successfully")2026-06-03 15:36:18,407 - INFO - ========== Pipeline started ==========
+2026-06-03 15:36:18,407 - INFO - Extracting customers.csv
+2026-06-03 15:36:18,438 - INFO - Rows extracted: 100
+2026-06-03 15:36:18,465 - INFO - No null values found
+2026-06-03 15:36:18,466 - INFO - No duplicate rows found
+2026-06-03 15:36:18,499 - INFO - Customers data transformed
+2026-06-03 15:36:18,590 - INFO - Customers data saved to C:\Users\homam\OneDrive\Desktop\intern-bootcamp\data\processed\customers_clean.parquet
+2026-06-03 15:36:18,590 - INFO - Total rows processed: 100
+2026-06-03 15:36:18,590 - INFO - Total validation errors: 0
+2026-06-03 15:36:18,591 - INFO - ========== Pipeline finished ==========
+2026-06-03 15:48:45,699 - INFO - ========== Pipeline started ==========
+2026-06-03 15:48:45,700 - INFO - Extracting customers.csv
+2026-06-03 15:48:45,741 - INFO - Customers rows extracted: 100
+2026-06-03 15:48:45,766 - INFO - Customers: No null values found
+2026-06-03 15:48:45,766 - INFO - Customers: No duplicate rows found
+2026-06-03 15:48:45,789 - INFO - Customers data transformed
+2026-06-03 15:48:45,902 - INFO - Customers data saved to C:\Users\homam\OneDrive\Desktop\intern-bootcamp\data\processed\customers_clean.parquet
+2026-06-03 15:48:45,902 - INFO - Extracting products.csv
+2026-06-03 15:48:45,944 - INFO - Products rows extracted: 30
+2026-06-03 15:48:45,947 - INFO - Products: No null values found
+2026-06-03 15:48:45,948 - INFO - Products: No duplicate rows found
+2026-06-03 15:48:45,950 - INFO - Products data transformed
+2026-06-03 15:48:45,955 - INFO - Products data saved to C:\Users\homam\OneDrive\Desktop\intern-bootcamp\data\processed\products_clean.parquet
+2026-06-03 15:48:45,956 - INFO - Extracting orders.csv
+2026-06-03 15:48:45,989 - INFO - Orders rows extracted: 200
+2026-06-03 15:48:45,993 - INFO - Orders: No null values found
+2026-06-03 15:48:45,994 - INFO - Orders: No duplicate rows found
+2026-06-03 15:48:46,000 - INFO - Orders data transformed
+2026-06-03 15:48:46,006 - INFO - Orders data saved to C:\Users\homam\OneDrive\Desktop\intern-bootcamp\data\processed\orders_clean.parquet
+2026-06-03 15:48:46,007 - INFO - Extracting order_items.csv
+2026-06-03 15:48:46,147 - INFO - Order items rows extracted: 496
+2026-06-03 15:48:46,150 - INFO - Order items: No null values found
+2026-06-03 15:48:46,151 - INFO - Order items: No duplicate rows found
+2026-06-03 15:48:46,155 - INFO - Order items data transformed
+2026-06-03 15:48:46,162 - INFO - Order items data saved to C:\Users\homam\OneDrive\Desktop\intern-bootcamp\data\processed\order_items_clean.parquet
+2026-06-03 15:48:46,162 - INFO - Extracting transactions.csv
+2026-06-03 15:48:46,187 - INFO - Transactions rows extracted: 200
+2026-06-03 15:48:46,189 - INFO - Transactions: No null values found
+2026-06-03 15:48:46,189 - INFO - Transactions: No duplicate rows found
+2026-06-03 15:48:46,192 - INFO - Transactions data transformed
+2026-06-03 15:48:46,197 - INFO - Transactions data saved to C:\Users\homam\OneDrive\Desktop\intern-bootcamp\data\processed\transactions_clean.parquet
+2026-06-03 15:48:46,198 - INFO - ========== Pipeline finished ==========
+2026-06-03 15:48:46,198 - INFO - Total rows processed: 1026
+2026-06-03 15:48:46,198 - INFO - Total validation errors: 0
