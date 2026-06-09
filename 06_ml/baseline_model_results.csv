@@ -1,0 +1,4 @@
+model,accuracy,execution_time_seconds
+Logistic Regression,1.0,0.35452842712402344
+Decision Tree,1.0,0.022927045822143555
+Random Forest,1.0,0.17105674743652344

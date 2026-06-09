@@ -1,0 +1,4 @@
+model,cv_mean_accuracy,cv_std_accuracy,execution_time_seconds
+Logistic Regression,0.8357999999999999,0.013600000000000013,1.392794132232666
+Decision Tree,1.0,0.0,0.07210636138916016
+Random Forest,1.0,0.0,2.555100202560425
