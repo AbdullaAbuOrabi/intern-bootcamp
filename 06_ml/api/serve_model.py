@@ -1,10 +1,50 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
+from fastapi.responses import JSONResponse
+from fastapi.exceptions import RequestValidationError
 from pydantic import BaseModel
 import joblib
 import pandas as pd
 from pathlib import Path
+import logging
+
 
 app = FastAPI(title="ML Model API")
+
+
+LOG_PATH = Path(__file__).resolve().parent / "api_logs.txt"
+
+logging.basicConfig(
+    filename=LOG_PATH,
+    level=logging.INFO,
+    format="%(asctime)s - %(levelname)s - %(message)s",
+    force=True
+)
+
+
+@app.exception_handler(RequestValidationError)
+async def validation_exception_handler(request: Request, exc: RequestValidationError):
+    logging.error(f"Validation error: {exc.errors()}")
+
+    return JSONResponse(
+        status_code=422,
+        content={
+            "message": "Invalid input. Please check the required fields and data types.",
+            "errors": exc.errors()
+        }
+    )
+
+
+@app.exception_handler(Exception)
+async def general_exception_handler(request: Request, exc: Exception):
+    logging.error(f"Unexpected error: {str(exc)}")
+
+    return JSONResponse(
+        status_code=500,
+        content={
+            "message": "An unexpected error occurred while processing the request."
+        }
+    )
+
 
 MODEL_PATH = Path(__file__).resolve().parent.parent / "best_model.pkl"
 
@@ -22,6 +62,14 @@ class PredictionInput(BaseModel):
     cat__city_Dubai: int
     cat__city_Sharjah: int
 
+    class Config:
+        extra = "forbid"
+
+
+class PredictionOutput(BaseModel):
+    prediction: int
+    message: str
+
 
 @app.get("/health")
 def health_check():
@@ -34,7 +82,7 @@ def health_check():
     }
 
 
-@app.post("/predict")
+@app.post("/predict", response_model=PredictionOutput)
 def predict(data: PredictionInput):
     input_data = data.dict()
 
@@ -54,6 +102,10 @@ def predict(data: PredictionInput):
     prediction = model.predict(input_df)
 
     prediction_value = int(prediction[0])
+
+    logging.info(
+        f"Prediction completed successfully. Prediction: {prediction_value}"
+    )
 
     return {
         "prediction": prediction_value,
