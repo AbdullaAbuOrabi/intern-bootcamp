@@ -1,0 +1,6 @@
+2026-06-11 10:25:02,313 - INFO - Batch prediction started.
+2026-06-11 10:28:08,129 - INFO - Batch prediction started.
+2026-06-11 10:28:08,846 - INFO - Batch prediction completed successfully.
+2026-06-11 10:28:08,846 - INFO - Total customers processed: 100
+2026-06-11 10:28:08,846 - INFO - Predicted positive cases: 100.0
+2026-06-11 10:28:08,846 - INFO - Predicted negative cases: 0.0
