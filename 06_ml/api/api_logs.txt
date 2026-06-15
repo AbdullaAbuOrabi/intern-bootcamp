@@ -2,3 +2,6 @@
 2026-06-10 14:44:09,818 - INFO - Prediction completed successfully. Prediction: 1
 2026-06-10 14:44:28,502 - ERROR - Validation error: [{'type': 'missing', 'loc': ('body', 'cat__city_Sharjah'), 'msg': 'Field required', 'input': {'num__total_orders': 5, 'num__total_spent': 500, 'num__average_order_amount': 100, 'num__successful_payments': 4, 'cat__city_Abu_Dhabi': 0, 'cat__city_Ajman': 0, 'cat__city_Dubai': 1}}]
 2026-06-10 14:44:49,798 - ERROR - Validation error: [{'type': 'extra_forbidden', 'loc': ('body', 'wrong_field'), 'msg': 'Extra inputs are not permitted', 'input': 123}]
+2026-06-11 16:00:21,098 - INFO - Prediction completed successfully. Prediction: 1
+2026-06-11 16:00:39,994 - INFO - Prediction completed successfully. Prediction: 1
+2026-06-11 16:23:38,120 - INFO - Prediction completed successfully. Prediction: 1
