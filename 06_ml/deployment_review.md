@@ -26,3 +26,4 @@ The user or another application sends feature values to the FastAPI `/predict` e
 ## What I Learned
 
 I learned how the separate deployment components created during Week 4 can work together as one complete system. I understood that FastAPI allows other applications to use the machine learning model, while batch prediction is used to process many records at once. I also confirmed that prediction results can be stored in PostgreSQL for later review and analysis. This task was mainly an integration and final testing task rather than creating a new model or application.
+git status 
