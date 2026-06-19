@@ -1,0 +1,7 @@
+Here is a summary of the markdown document:
+
+Summary:
+Prompt templates are reusable structures for communicating with large language models, making development more efficient and consistent.
+
+Main idea:
+The document explains how prompt templates can be used in LangChain to create clear and organized prompts for large language models.
