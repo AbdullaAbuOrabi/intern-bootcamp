@@ -1,0 +1,8 @@
+Experiment,Setting,Expected Behavior,Observation
+Temperature Test,Temperature = 0.1,"More direct, stable, and predictable","The response was focused, simple, and less creative."
+Temperature Test,Temperature = 0.7,Balanced between factual and natural,The response was clear and slightly more flexible in wording.
+Temperature Test,Temperature = 1.0,More creative and varied,The response was more expressive and less predictable.
+Max Token Test,Small max tokens,Shorter output,The answer was shorter and less detailed.
+Max Token Test,Large max tokens,Longer output,The answer was longer and more complete.
+Creative vs Factual,Creative prompt with higher temperature,Story-like and imaginative,The model generated a more imaginative and expressive response.
+Creative vs Factual,Factual prompt with lower temperature,"Clear, direct, and educational",The model generated a more serious and explanatory response.

@@ -1,0 +1,23 @@
+Prompt,Temperature,Max Tokens,Output
+Explain Large Language Models in simple words.,0.3,50,"Large Language Models (LLMs) are a type of artificial intelligence that can understand and generate human-like text. Here's how they work in simple terms:
+
+**Imagine you have a super smart librarian who knows everything about books, authors, and literature."
+Explain Large Language Models in simple words.,0.3,120,"Large Language Models (LLMs) are a type of artificial intelligence that can understand and generate human-like language.
+
+Imagine you have a super smart, all-knowing assistant who can read and write any kind of text, from emails to articles to even entire books. That's basically what an LLM is.
+
+Here's how it works:
+
+1. **Training data**: The model is trained on a massive amount of text data, which includes books, articles, conversations, and more.
+2. **Pattern recognition**: As the model reads through this data, it starts to recognize patterns in language, such as"
+Explain Large Language Models in simple words.,0.3,250,"Imagine you have a huge library with millions of books, and each book has a lot of information about different topics. A large language model is like a super-smart librarian that can read all these books (or text) and understand what they say.
+
+A large language model works by looking at patterns in the data it's been trained on, which are essentially big collections of words, phrases, and sentences. It then uses this information to create a set of rules or algorithms that allow it to generate new text based on those patterns.
+
+Think of it like this: if you ask the librarian a question like ""What is the capital of France?"", they might start by looking at all the books in the library about France, and then use their understanding of language patterns to figure out the correct answer. A large language model can do something similar, but instead of being limited to just one book or topic, it can look at millions of texts and generate answers based on those patterns.
+
+The key benefits of large language models are:
+
+* They can understand complex questions and generate accurate answers
+* They can be used for a wide range of applications, such as chatbots, virtual assistants, and even translation software
+* They can learn from data over time, which means"
