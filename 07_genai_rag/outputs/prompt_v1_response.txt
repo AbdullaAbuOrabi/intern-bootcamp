@@ -1,0 +1,21 @@
+Prompt Version 1 — Simple Prompt
+
+Prompt:
+Summarize the following customer feedback and highlight the main issues:
+
+1. The delivery was late, but the product quality was good.
+2. Customer support took too long to reply to my issue.
+3. The app is easy to use and the checkout process is simple.
+4. My order arrived damaged and I had to request a replacement.
+5. The prices are fair, but delivery tracking was not accurate.
+6. I liked the product, but the refund process was confusing.
+7. The website design is clear and easy to navigate.
+8. I waited several days for customer support to solve my problem.
+
+Generated Response:
+The customer feedback is mixed. Customers liked the product quality, fair prices, simple checkout process, and easy-to-use app and website. However, several issues were mentioned, including late delivery, slow customer support, damaged orders, inaccurate delivery tracking, and a confusing refund process.
+
+The main issues are delivery problems, customer support delays, damaged products, and unclear refund processes.
+
+Evaluation Notes:
+This prompt gives a basic summary, but it does not force the output to follow a clear structure. It also does not rank the issues or explain which problems are repeated the most.
