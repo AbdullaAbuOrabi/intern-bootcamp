@@ -1,0 +1,15 @@
+prompt_version,output,keyword_score,format_score,conciseness_score,faithfulness_score,hallucination_count,word_count,total_score
+Prompt 1 - Vague,"The headphones are comfortable and have good sound quality, but the battery life is disappointing.",3,0,1,1,0,15,5
+Prompt 2 - Structured,"
+- Sentiment: Mixed
+- Positive points: Comfortable design, great sound quality
+- Negative points: Battery drains faster than expected
+- Recommendation: Good for users who care about comfort and sound quality, but not ideal for users who need long battery life.
+",5,4,1,1,0,41,11
+Prompt 3 - Few-shot,"
+- Sentiment: Mixed
+- Positive points: Very comfortable, great sound quality
+- Negative points: Battery drains faster than expected
+- Recommendation: Good for users who value comfort and audio quality, but not recommended for users who need strong battery performance.
+",5,4,1,1,0,40,11
+Prompt 4 - Overly Constrained,"Comfortable headphones with great sound, but weak battery life.",3,0,1,1,0,9,5
