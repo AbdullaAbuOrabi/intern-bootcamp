@@ -1,0 +1,13 @@
+user_input,reference
+"What is the main purpose of RAG?","RAG helps an LLM answer questions using external documents instead of relying only on its internal knowledge."
+"What problem does RAG help reduce?","RAG helps reduce hallucination by grounding answers in retrieved context from documents."
+"What are embeddings used for in a RAG system?","Embeddings convert text into numerical vectors so questions and document chunks can be compared by meaning."
+"What is chunking in RAG?","Chunking is the process of splitting documents into smaller text pieces before storing and retrieving them."
+"Why do we store chunks in a vector database?","Chunks are stored in a vector database so the system can search for the most semantically relevant chunks when a user asks a question."
+"What does the retriever do in a RAG pipeline?","The retriever finds the most relevant document chunks based on the user question."
+"What does top-k mean in retrieval?","Top-k means the number of most relevant chunks returned by the retriever."
+"Why can increasing top-k improve context recall?","Increasing top-k can improve context recall because more chunks are retrieved, which increases the chance of including the needed information."
+"Why can increasing top-k sometimes hurt answer quality?","Increasing top-k can add irrelevant or noisy chunks, which may confuse the model or reduce answer focus."
+"What does faithfulness measure in RAG evaluation?","Faithfulness measures whether the generated answer is supported by the retrieved context."
+"What does context recall measure in RAG evaluation?","Context recall measures whether the retrieved context contains the information needed to answer the reference answer."
+"How can RAG be improved after evaluation?","RAG can be improved by tuning chunk size, top-k, retrieval method, prompts, and adding reranking."

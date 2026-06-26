@@ -1,0 +1,769 @@
+question,reference,generated_answer,retrieved_contexts,context_relevance_label,response_quality_label,context_recall,faithfulness,top_k
+What is the main purpose of RAG?,RAG helps an LLM answer questions using external documents instead of relying only on its internal knowledge.,RAG stands for Retrieval-Augmented Generation. It allows an AI system to answer questions using external documents.,"# Project FAQ
+
+## What is RAG?
+
+RAG stands for Retrieval-Augmented Generation. It allows an AI system to answer questions using external documents.
+
+## Why do we use chunking?
+
+## Why do we use chunking?
+
+Chunking splits large documents into smaller parts so the system can retrieve only the most relevant information.
+
+## What is a vector store?
+
+## What is a vector store?
+
+A vector store saves document chunks as embeddings so similar information can be searched quickly.
+
+## What is semantic search?",Medium,Needs review,0.46,1.0,3
+What problem does RAG help reduce?,RAG helps reduce hallucination by grounding answers in retrieved context from documents.,RAG stands for Retrieval-Augmented Generation. It allows an AI system to answer questions using external documents.,"# Project FAQ
+
+## What is RAG?
+
+RAG stands for Retrieval-Augmented Generation. It allows an AI system to answer questions using external documents.
+
+## Why do we use chunking?
+
+## Why do we use chunking?
+
+Chunking splits large documents into smaller parts so the system can retrieve only the most relevant information.
+
+## What is a vector store?
+
+## What is semantic search?
+
+Semantic search finds text based on meaning, not only exact keywords.",Medium,Needs review,0.22,1.0,3
+What are embeddings used for in a RAG system?,Embeddings convert text into numerical vectors so questions and document chunks can be compared by meaning.,A vector store saves document chunks as embeddings so similar information can be searched quickly.,"# Project FAQ
+
+## What is RAG?
+
+RAG stands for Retrieval-Augmented Generation. It allows an AI system to answer questions using external documents.
+
+## Why do we use chunking?
+
+## What is a vector store?
+
+A vector store saves document chunks as embeddings so similar information can be searched quickly.
+
+## What is semantic search?
+
+## Why do we use chunking?
+
+Chunking splits large documents into smaller parts so the system can retrieve only the most relevant information.
+
+## What is a vector store?",Medium,Needs review,0.45,1.0,3
+What is chunking in RAG?,Chunking is the process of splitting documents into smaller text pieces before storing and retrieving them.,RAG stands for Retrieval-Augmented Generation. It allows an AI system to answer questions using external documents.,"# Project FAQ
+
+## What is RAG?
+
+RAG stands for Retrieval-Augmented Generation. It allows an AI system to answer questions using external documents.
+
+## Why do we use chunking?
+
+## Why do we use chunking?
+
+Chunking splits large documents into smaller parts so the system can retrieve only the most relevant information.
+
+## What is a vector store?
+
+## What is a vector store?
+
+A vector store saves document chunks as embeddings so similar information can be searched quickly.
+
+## What is semantic search?",High,Good,0.33,1.0,3
+Why do we store chunks in a vector database?,Chunks are stored in a vector database so the system can search for the most semantically relevant chunks when a user asks a question.,A vector store saves document chunks as embeddings so similar information can be searched quickly.,"## Why do we use chunking?
+
+Chunking splits large documents into smaller parts so the system can retrieve only the most relevant information.
+
+## What is a vector store?
+
+## What is a vector store?
+
+A vector store saves document chunks as embeddings so similar information can be searched quickly.
+
+## What is semantic search?
+
+# Project FAQ
+
+## What is RAG?
+
+RAG stands for Retrieval-Augmented Generation. It allows an AI system to answer questions using external documents.
+
+## Why do we use chunking?",Medium,Needs review,0.5,1.0,3
+What does the retriever do in a RAG pipeline?,The retriever finds the most relevant document chunks based on the user question.,RAG stands for Retrieval-Augmented Generation. It allows an AI system to answer questions using external documents.,"# Project FAQ
+
+## What is RAG?
+
+RAG stands for Retrieval-Augmented Generation. It allows an AI system to answer questions using external documents.
+
+## Why do we use chunking?
+
+## Why do we use chunking?
+
+Chunking splits large documents into smaller parts so the system can retrieve only the most relevant information.
+
+## What is a vector store?
+
+## What is a vector store?
+
+A vector store saves document chunks as embeddings so similar information can be searched quickly.
+
+## What is semantic search?",Medium,Needs review,0.44,1.0,3
+What does top-k mean in retrieval?,Top-k means the number of most relevant chunks returned by the retriever.,"Semantic search finds text based on meaning, not only exact keywords.","## What is semantic search?
+
+Semantic search finds text based on meaning, not only exact keywords.
+
+# Project FAQ
+
+## What is RAG?
+
+RAG stands for Retrieval-Augmented Generation. It allows an AI system to answer questions using external documents.
+
+## Why do we use chunking?
+
+## What is a vector store?
+
+A vector store saves document chunks as embeddings so similar information can be searched quickly.
+
+## What is semantic search?",Low,Needs review,0.12,1.0,3
+Why can increasing top-k improve context recall?,"Increasing top-k can improve context recall because more chunks are retrieved, which increases the chance of including the needed information.",Chunking splits large documents into smaller parts so the system can retrieve only the most relevant information.,"## Why do we use chunking?
+
+Chunking splits large documents into smaller parts so the system can retrieve only the most relevant information.
+
+## What is a vector store?
+
+## What is a vector store?
+
+A vector store saves document chunks as embeddings so similar information can be searched quickly.
+
+## What is semantic search?
+
+## What is semantic search?
+
+Semantic search finds text based on meaning, not only exact keywords.",Low,Needs review,0.13,1.0,3
+Why can increasing top-k sometimes hurt answer quality?,"Increasing top-k can add irrelevant or noisy chunks, which may confuse the model or reduce answer focus.",RAG stands for Retrieval-Augmented Generation. It allows an AI system to answer questions using external documents.,"# Project FAQ
+
+## What is RAG?
+
+RAG stands for Retrieval-Augmented Generation. It allows an AI system to answer questions using external documents.
+
+## Why do we use chunking?
+
+## Why do we use chunking?
+
+Chunking splits large documents into smaller parts so the system can retrieve only the most relevant information.
+
+## What is a vector store?
+
+## What is a vector store?
+
+A vector store saves document chunks as embeddings so similar information can be searched quickly.
+
+## What is semantic search?",Low,Needs review,0.15,1.0,3
+What does faithfulness measure in RAG evaluation?,Faithfulness measures whether the generated answer is supported by the retrieved context.,RAG stands for Retrieval-Augmented Generation. It allows an AI system to answer questions using external documents.,"# Project FAQ
+
+## What is RAG?
+
+RAG stands for Retrieval-Augmented Generation. It allows an AI system to answer questions using external documents.
+
+## Why do we use chunking?
+
+## What is semantic search?
+
+Semantic search finds text based on meaning, not only exact keywords.
+
+## What is a vector store?
+
+A vector store saves document chunks as embeddings so similar information can be searched quickly.
+
+## What is semantic search?",Low,Needs review,0.12,1.0,3
+What does context recall measure in RAG evaluation?,Context recall measures whether the retrieved context contains the information needed to answer the reference answer.,RAG stands for Retrieval-Augmented Generation. It allows an AI system to answer questions using external documents.,"# Project FAQ
+
+## What is RAG?
+
+RAG stands for Retrieval-Augmented Generation. It allows an AI system to answer questions using external documents.
+
+## Why do we use chunking?
+
+## What is a vector store?
+
+A vector store saves document chunks as embeddings so similar information can be searched quickly.
+
+## What is semantic search?
+
+## What is semantic search?
+
+Semantic search finds text based on meaning, not only exact keywords.",Medium,Needs review,0.2,1.0,3
+How can RAG be improved after evaluation?,"RAG can be improved by tuning chunk size, top-k, retrieval method, prompts, and adding reranking.",Chunking splits large documents into smaller parts so the system can retrieve only the most relevant information.,"# Project FAQ
+
+## What is RAG?
+
+RAG stands for Retrieval-Augmented Generation. It allows an AI system to answer questions using external documents.
+
+## Why do we use chunking?
+
+## What is a vector store?
+
+A vector store saves document chunks as embeddings so similar information can be searched quickly.
+
+## What is semantic search?
+
+## Why do we use chunking?
+
+Chunking splits large documents into smaller parts so the system can retrieve only the most relevant information.
+
+## What is a vector store?",Medium,Needs review,0.18,1.0,3
+What is the main purpose of RAG?,RAG helps an LLM answer questions using external documents instead of relying only on its internal knowledge.,RAG stands for Retrieval-Augmented Generation. It allows an AI system to answer questions using external documents.,"# Project FAQ
+
+## What is RAG?
+
+RAG stands for Retrieval-Augmented Generation. It allows an AI system to answer questions using external documents.
+
+## Why do we use chunking?
+
+## Why do we use chunking?
+
+Chunking splits large documents into smaller parts so the system can retrieve only the most relevant information.
+
+## What is a vector store?
+
+## What is a vector store?
+
+A vector store saves document chunks as embeddings so similar information can be searched quickly.
+
+## What is semantic search?
+
+## What is semantic search?
+
+Semantic search finds text based on meaning, not only exact keywords.",Medium,Needs review,0.46,1.0,5
+What problem does RAG help reduce?,RAG helps reduce hallucination by grounding answers in retrieved context from documents.,RAG stands for Retrieval-Augmented Generation. It allows an AI system to answer questions using external documents.,"# Project FAQ
+
+## What is RAG?
+
+RAG stands for Retrieval-Augmented Generation. It allows an AI system to answer questions using external documents.
+
+## Why do we use chunking?
+
+## Why do we use chunking?
+
+Chunking splits large documents into smaller parts so the system can retrieve only the most relevant information.
+
+## What is a vector store?
+
+## What is semantic search?
+
+Semantic search finds text based on meaning, not only exact keywords.
+
+## What is a vector store?
+
+A vector store saves document chunks as embeddings so similar information can be searched quickly.
+
+## What is semantic search?",Medium,Needs review,0.22,1.0,5
+What are embeddings used for in a RAG system?,Embeddings convert text into numerical vectors so questions and document chunks can be compared by meaning.,A vector store saves document chunks as embeddings so similar information can be searched quickly.,"# Project FAQ
+
+## What is RAG?
+
+RAG stands for Retrieval-Augmented Generation. It allows an AI system to answer questions using external documents.
+
+## Why do we use chunking?
+
+## What is a vector store?
+
+A vector store saves document chunks as embeddings so similar information can be searched quickly.
+
+## What is semantic search?
+
+## Why do we use chunking?
+
+Chunking splits large documents into smaller parts so the system can retrieve only the most relevant information.
+
+## What is a vector store?
+
+## What is semantic search?
+
+Semantic search finds text based on meaning, not only exact keywords.",Medium,Needs review,0.64,1.0,5
+What is chunking in RAG?,Chunking is the process of splitting documents into smaller text pieces before storing and retrieving them.,RAG stands for Retrieval-Augmented Generation. It allows an AI system to answer questions using external documents.,"# Project FAQ
+
+## What is RAG?
+
+RAG stands for Retrieval-Augmented Generation. It allows an AI system to answer questions using external documents.
+
+## Why do we use chunking?
+
+## Why do we use chunking?
+
+Chunking splits large documents into smaller parts so the system can retrieve only the most relevant information.
+
+## What is a vector store?
+
+## What is a vector store?
+
+A vector store saves document chunks as embeddings so similar information can be searched quickly.
+
+## What is semantic search?
+
+## What is semantic search?
+
+Semantic search finds text based on meaning, not only exact keywords.",High,Good,0.42,1.0,5
+Why do we store chunks in a vector database?,Chunks are stored in a vector database so the system can search for the most semantically relevant chunks when a user asks a question.,A vector store saves document chunks as embeddings so similar information can be searched quickly.,"## Why do we use chunking?
+
+Chunking splits large documents into smaller parts so the system can retrieve only the most relevant information.
+
+## What is a vector store?
+
+## What is a vector store?
+
+A vector store saves document chunks as embeddings so similar information can be searched quickly.
+
+## What is semantic search?
+
+# Project FAQ
+
+## What is RAG?
+
+RAG stands for Retrieval-Augmented Generation. It allows an AI system to answer questions using external documents.
+
+## Why do we use chunking?
+
+## What is semantic search?
+
+Semantic search finds text based on meaning, not only exact keywords.",Medium,Needs review,0.5,1.0,5
+What does the retriever do in a RAG pipeline?,The retriever finds the most relevant document chunks based on the user question.,RAG stands for Retrieval-Augmented Generation. It allows an AI system to answer questions using external documents.,"# Project FAQ
+
+## What is RAG?
+
+RAG stands for Retrieval-Augmented Generation. It allows an AI system to answer questions using external documents.
+
+## Why do we use chunking?
+
+## Why do we use chunking?
+
+Chunking splits large documents into smaller parts so the system can retrieve only the most relevant information.
+
+## What is a vector store?
+
+## What is a vector store?
+
+A vector store saves document chunks as embeddings so similar information can be searched quickly.
+
+## What is semantic search?
+
+## What is semantic search?
+
+Semantic search finds text based on meaning, not only exact keywords.",Medium,Needs review,0.67,1.0,5
+What does top-k mean in retrieval?,Top-k means the number of most relevant chunks returned by the retriever.,"Semantic search finds text based on meaning, not only exact keywords.","## What is semantic search?
+
+Semantic search finds text based on meaning, not only exact keywords.
+
+# Project FAQ
+
+## What is RAG?
+
+RAG stands for Retrieval-Augmented Generation. It allows an AI system to answer questions using external documents.
+
+## Why do we use chunking?
+
+## What is a vector store?
+
+A vector store saves document chunks as embeddings so similar information can be searched quickly.
+
+## What is semantic search?
+
+## Why do we use chunking?
+
+Chunking splits large documents into smaller parts so the system can retrieve only the most relevant information.
+
+## What is a vector store?",Low,Needs review,0.38,1.0,5
+Why can increasing top-k improve context recall?,"Increasing top-k can improve context recall because more chunks are retrieved, which increases the chance of including the needed information.",Chunking splits large documents into smaller parts so the system can retrieve only the most relevant information.,"## Why do we use chunking?
+
+Chunking splits large documents into smaller parts so the system can retrieve only the most relevant information.
+
+## What is a vector store?
+
+## What is a vector store?
+
+A vector store saves document chunks as embeddings so similar information can be searched quickly.
+
+## What is semantic search?
+
+## What is semantic search?
+
+Semantic search finds text based on meaning, not only exact keywords.
+
+# Project FAQ
+
+## What is RAG?
+
+RAG stands for Retrieval-Augmented Generation. It allows an AI system to answer questions using external documents.
+
+## Why do we use chunking?",Low,Needs review,0.13,1.0,5
+Why can increasing top-k sometimes hurt answer quality?,"Increasing top-k can add irrelevant or noisy chunks, which may confuse the model or reduce answer focus.",RAG stands for Retrieval-Augmented Generation. It allows an AI system to answer questions using external documents.,"# Project FAQ
+
+## What is RAG?
+
+RAG stands for Retrieval-Augmented Generation. It allows an AI system to answer questions using external documents.
+
+## Why do we use chunking?
+
+## Why do we use chunking?
+
+Chunking splits large documents into smaller parts so the system can retrieve only the most relevant information.
+
+## What is a vector store?
+
+## What is a vector store?
+
+A vector store saves document chunks as embeddings so similar information can be searched quickly.
+
+## What is semantic search?
+
+## What is semantic search?
+
+Semantic search finds text based on meaning, not only exact keywords.",Low,Needs review,0.15,1.0,5
+What does faithfulness measure in RAG evaluation?,Faithfulness measures whether the generated answer is supported by the retrieved context.,RAG stands for Retrieval-Augmented Generation. It allows an AI system to answer questions using external documents.,"# Project FAQ
+
+## What is RAG?
+
+RAG stands for Retrieval-Augmented Generation. It allows an AI system to answer questions using external documents.
+
+## Why do we use chunking?
+
+## What is semantic search?
+
+Semantic search finds text based on meaning, not only exact keywords.
+
+## What is a vector store?
+
+A vector store saves document chunks as embeddings so similar information can be searched quickly.
+
+## What is semantic search?
+
+## Why do we use chunking?
+
+Chunking splits large documents into smaller parts so the system can retrieve only the most relevant information.
+
+## What is a vector store?",Low,Needs review,0.12,1.0,5
+What does context recall measure in RAG evaluation?,Context recall measures whether the retrieved context contains the information needed to answer the reference answer.,RAG stands for Retrieval-Augmented Generation. It allows an AI system to answer questions using external documents.,"# Project FAQ
+
+## What is RAG?
+
+RAG stands for Retrieval-Augmented Generation. It allows an AI system to answer questions using external documents.
+
+## Why do we use chunking?
+
+## What is a vector store?
+
+A vector store saves document chunks as embeddings so similar information can be searched quickly.
+
+## What is semantic search?
+
+## What is semantic search?
+
+Semantic search finds text based on meaning, not only exact keywords.
+
+## Why do we use chunking?
+
+Chunking splits large documents into smaller parts so the system can retrieve only the most relevant information.
+
+## What is a vector store?",Medium,Needs review,0.2,1.0,5
+How can RAG be improved after evaluation?,"RAG can be improved by tuning chunk size, top-k, retrieval method, prompts, and adding reranking.",Chunking splits large documents into smaller parts so the system can retrieve only the most relevant information.,"# Project FAQ
+
+## What is RAG?
+
+RAG stands for Retrieval-Augmented Generation. It allows an AI system to answer questions using external documents.
+
+## Why do we use chunking?
+
+## What is a vector store?
+
+A vector store saves document chunks as embeddings so similar information can be searched quickly.
+
+## What is semantic search?
+
+## Why do we use chunking?
+
+Chunking splits large documents into smaller parts so the system can retrieve only the most relevant information.
+
+## What is a vector store?
+
+## What is semantic search?
+
+Semantic search finds text based on meaning, not only exact keywords.",Medium,Needs review,0.18,1.0,5
+What is the main purpose of RAG?,RAG helps an LLM answer questions using external documents instead of relying only on its internal knowledge.,RAG stands for Retrieval-Augmented Generation. It allows an AI system to answer questions using external documents.,"# Project FAQ
+
+## What is RAG?
+
+RAG stands for Retrieval-Augmented Generation. It allows an AI system to answer questions using external documents.
+
+## Why do we use chunking?
+
+## Why do we use chunking?
+
+Chunking splits large documents into smaller parts so the system can retrieve only the most relevant information.
+
+## What is a vector store?
+
+## What is a vector store?
+
+A vector store saves document chunks as embeddings so similar information can be searched quickly.
+
+## What is semantic search?
+
+## What is semantic search?
+
+Semantic search finds text based on meaning, not only exact keywords.",Medium,Needs review,0.46,1.0,7
+What problem does RAG help reduce?,RAG helps reduce hallucination by grounding answers in retrieved context from documents.,RAG stands for Retrieval-Augmented Generation. It allows an AI system to answer questions using external documents.,"# Project FAQ
+
+## What is RAG?
+
+RAG stands for Retrieval-Augmented Generation. It allows an AI system to answer questions using external documents.
+
+## Why do we use chunking?
+
+## Why do we use chunking?
+
+Chunking splits large documents into smaller parts so the system can retrieve only the most relevant information.
+
+## What is a vector store?
+
+## What is semantic search?
+
+Semantic search finds text based on meaning, not only exact keywords.
+
+## What is a vector store?
+
+A vector store saves document chunks as embeddings so similar information can be searched quickly.
+
+## What is semantic search?",Medium,Needs review,0.22,1.0,7
+What are embeddings used for in a RAG system?,Embeddings convert text into numerical vectors so questions and document chunks can be compared by meaning.,A vector store saves document chunks as embeddings so similar information can be searched quickly.,"# Project FAQ
+
+## What is RAG?
+
+RAG stands for Retrieval-Augmented Generation. It allows an AI system to answer questions using external documents.
+
+## Why do we use chunking?
+
+## What is a vector store?
+
+A vector store saves document chunks as embeddings so similar information can be searched quickly.
+
+## What is semantic search?
+
+## Why do we use chunking?
+
+Chunking splits large documents into smaller parts so the system can retrieve only the most relevant information.
+
+## What is a vector store?
+
+## What is semantic search?
+
+Semantic search finds text based on meaning, not only exact keywords.",Medium,Needs review,0.64,1.0,7
+What is chunking in RAG?,Chunking is the process of splitting documents into smaller text pieces before storing and retrieving them.,RAG stands for Retrieval-Augmented Generation. It allows an AI system to answer questions using external documents.,"# Project FAQ
+
+## What is RAG?
+
+RAG stands for Retrieval-Augmented Generation. It allows an AI system to answer questions using external documents.
+
+## Why do we use chunking?
+
+## Why do we use chunking?
+
+Chunking splits large documents into smaller parts so the system can retrieve only the most relevant information.
+
+## What is a vector store?
+
+## What is a vector store?
+
+A vector store saves document chunks as embeddings so similar information can be searched quickly.
+
+## What is semantic search?
+
+## What is semantic search?
+
+Semantic search finds text based on meaning, not only exact keywords.",High,Good,0.42,1.0,7
+Why do we store chunks in a vector database?,Chunks are stored in a vector database so the system can search for the most semantically relevant chunks when a user asks a question.,A vector store saves document chunks as embeddings so similar information can be searched quickly.,"## Why do we use chunking?
+
+Chunking splits large documents into smaller parts so the system can retrieve only the most relevant information.
+
+## What is a vector store?
+
+## What is a vector store?
+
+A vector store saves document chunks as embeddings so similar information can be searched quickly.
+
+## What is semantic search?
+
+# Project FAQ
+
+## What is RAG?
+
+RAG stands for Retrieval-Augmented Generation. It allows an AI system to answer questions using external documents.
+
+## Why do we use chunking?
+
+## What is semantic search?
+
+Semantic search finds text based on meaning, not only exact keywords.",Medium,Needs review,0.5,1.0,7
+What does the retriever do in a RAG pipeline?,The retriever finds the most relevant document chunks based on the user question.,RAG stands for Retrieval-Augmented Generation. It allows an AI system to answer questions using external documents.,"# Project FAQ
+
+## What is RAG?
+
+RAG stands for Retrieval-Augmented Generation. It allows an AI system to answer questions using external documents.
+
+## Why do we use chunking?
+
+## Why do we use chunking?
+
+Chunking splits large documents into smaller parts so the system can retrieve only the most relevant information.
+
+## What is a vector store?
+
+## What is a vector store?
+
+A vector store saves document chunks as embeddings so similar information can be searched quickly.
+
+## What is semantic search?
+
+## What is semantic search?
+
+Semantic search finds text based on meaning, not only exact keywords.",Medium,Needs review,0.67,1.0,7
+What does top-k mean in retrieval?,Top-k means the number of most relevant chunks returned by the retriever.,"Semantic search finds text based on meaning, not only exact keywords.","## What is semantic search?
+
+Semantic search finds text based on meaning, not only exact keywords.
+
+# Project FAQ
+
+## What is RAG?
+
+RAG stands for Retrieval-Augmented Generation. It allows an AI system to answer questions using external documents.
+
+## Why do we use chunking?
+
+## What is a vector store?
+
+A vector store saves document chunks as embeddings so similar information can be searched quickly.
+
+## What is semantic search?
+
+## Why do we use chunking?
+
+Chunking splits large documents into smaller parts so the system can retrieve only the most relevant information.
+
+## What is a vector store?",Low,Needs review,0.38,1.0,7
+Why can increasing top-k improve context recall?,"Increasing top-k can improve context recall because more chunks are retrieved, which increases the chance of including the needed information.",Chunking splits large documents into smaller parts so the system can retrieve only the most relevant information.,"## Why do we use chunking?
+
+Chunking splits large documents into smaller parts so the system can retrieve only the most relevant information.
+
+## What is a vector store?
+
+## What is a vector store?
+
+A vector store saves document chunks as embeddings so similar information can be searched quickly.
+
+## What is semantic search?
+
+## What is semantic search?
+
+Semantic search finds text based on meaning, not only exact keywords.
+
+# Project FAQ
+
+## What is RAG?
+
+RAG stands for Retrieval-Augmented Generation. It allows an AI system to answer questions using external documents.
+
+## Why do we use chunking?",Low,Needs review,0.13,1.0,7
+Why can increasing top-k sometimes hurt answer quality?,"Increasing top-k can add irrelevant or noisy chunks, which may confuse the model or reduce answer focus.",RAG stands for Retrieval-Augmented Generation. It allows an AI system to answer questions using external documents.,"# Project FAQ
+
+## What is RAG?
+
+RAG stands for Retrieval-Augmented Generation. It allows an AI system to answer questions using external documents.
+
+## Why do we use chunking?
+
+## Why do we use chunking?
+
+Chunking splits large documents into smaller parts so the system can retrieve only the most relevant information.
+
+## What is a vector store?
+
+## What is a vector store?
+
+A vector store saves document chunks as embeddings so similar information can be searched quickly.
+
+## What is semantic search?
+
+## What is semantic search?
+
+Semantic search finds text based on meaning, not only exact keywords.",Low,Needs review,0.15,1.0,7
+What does faithfulness measure in RAG evaluation?,Faithfulness measures whether the generated answer is supported by the retrieved context.,RAG stands for Retrieval-Augmented Generation. It allows an AI system to answer questions using external documents.,"# Project FAQ
+
+## What is RAG?
+
+RAG stands for Retrieval-Augmented Generation. It allows an AI system to answer questions using external documents.
+
+## Why do we use chunking?
+
+## What is semantic search?
+
+Semantic search finds text based on meaning, not only exact keywords.
+
+## What is a vector store?
+
+A vector store saves document chunks as embeddings so similar information can be searched quickly.
+
+## What is semantic search?
+
+## Why do we use chunking?
+
+Chunking splits large documents into smaller parts so the system can retrieve only the most relevant information.
+
+## What is a vector store?",Low,Needs review,0.12,1.0,7
+What does context recall measure in RAG evaluation?,Context recall measures whether the retrieved context contains the information needed to answer the reference answer.,RAG stands for Retrieval-Augmented Generation. It allows an AI system to answer questions using external documents.,"# Project FAQ
+
+## What is RAG?
+
+RAG stands for Retrieval-Augmented Generation. It allows an AI system to answer questions using external documents.
+
+## Why do we use chunking?
+
+## What is a vector store?
+
+A vector store saves document chunks as embeddings so similar information can be searched quickly.
+
+## What is semantic search?
+
+## What is semantic search?
+
+Semantic search finds text based on meaning, not only exact keywords.
+
+## Why do we use chunking?
+
+Chunking splits large documents into smaller parts so the system can retrieve only the most relevant information.
+
+## What is a vector store?",Medium,Needs review,0.2,1.0,7
+How can RAG be improved after evaluation?,"RAG can be improved by tuning chunk size, top-k, retrieval method, prompts, and adding reranking.",Chunking splits large documents into smaller parts so the system can retrieve only the most relevant information.,"# Project FAQ
+
+## What is RAG?
+
+RAG stands for Retrieval-Augmented Generation. It allows an AI system to answer questions using external documents.
+
+## Why do we use chunking?
+
+## What is a vector store?
+
+A vector store saves document chunks as embeddings so similar information can be searched quickly.
+
+## What is semantic search?
+
+## Why do we use chunking?
+
+Chunking splits large documents into smaller parts so the system can retrieve only the most relevant information.
+
+## What is a vector store?
+
+## What is semantic search?
+
+Semantic search finds text based on meaning, not only exact keywords.",Medium,Needs review,0.18,1.0,7
