@@ -1,270 +1,261 @@
-import json
-from datetime import datetime
-from retriever import hybrid_retrieve
+from typing import Any, Dict, List
+import re
 
 
-def build_context(retrieved_chunks):
+try:
+    from retriever import hybrid_retrieve, retrieve
+except ImportError:
+    from .retriever import hybrid_retrieve, retrieve
+
+
+def _flatten(value):
     """
-    Combine retrieved chunks into one context text.
+    Chroma sometimes returns nested lists like [[doc1, doc2, doc3]].
+    This converts them into a simple list.
     """
+    if isinstance(value, list) and value and isinstance(value[0], list):
+        return value[0]
 
-    context_parts = []
+    if isinstance(value, list):
+        return value
 
-    for i, chunk in enumerate(retrieved_chunks, start=1):
-        context_parts.append(
-            f"Context {i}:\n{chunk['content']}"
+    return []
+
+
+def _extract_text(item: Any) -> str:
+    """
+    Extract text from different possible retriever output formats.
+    """
+    if item is None:
+        return ""
+
+    if isinstance(item, str):
+        return item
+
+    if isinstance(item, dict):
+        return (
+            item.get("text")
+            or item.get("content")
+            or item.get("page_content")
+            or item.get("document")
+            or str(item)
         )
 
-    return "\n\n".join(context_parts)
+    if hasattr(item, "page_content"):
+        return item.page_content
+
+    return str(item)
 
 
-def build_prompt(query, context):
+def _extract_metadata(item: Any) -> Dict:
     """
-    Build the final prompt that would be sent to the LLM.
+    Extract metadata if available.
     """
+    if isinstance(item, dict):
+        return item.get("metadata", {})
 
-    prompt = f"""
-You are a helpful RAG assistant.
+    if hasattr(item, "metadata"):
+        return item.metadata
 
-Answer the user's question using only the context below.
-
-Rules:
-- Use only the provided context.
-- Do not invent information.
-- If the answer is not found in the context, say:
-  "I could not find enough information in the provided documents."
-- Keep the answer clear and simple.
-
-Context:
-{context}
-
-User question:
-{query}
-
-Answer:
-"""
-
-    return prompt
+    return {}
 
 
-def simple_llm_response(prompt):
+def _normalize_results(raw_results: Any) -> List[Dict]:
     """
-    Temporary simple LLM placeholder.
-
-    This version tries to answer using the line after the most relevant heading.
-    It avoids returning headings as final answers.
+    Convert retriever results into a clean list of dictionaries.
+    Each source will have:
+    - text
+    - metadata
+    - score
     """
 
-    if "Context:" not in prompt or "User question:" not in prompt:
-        return "I could not find enough information in the provided documents."
+    normalized = []
 
-    context = prompt.split("Context:")[1].split("User question:")[0].strip()
-    query = prompt.split("User question:")[1].split("Answer:")[0].strip()
+    if raw_results is None:
+        return normalized
 
-    if not context:
-        return "I could not find enough information in the provided documents."
+    # Chroma-style dictionary output
+    if isinstance(raw_results, dict) and "documents" in raw_results:
+        documents = _flatten(raw_results.get("documents"))
+        metadatas = _flatten(raw_results.get("metadatas"))
+        distances = _flatten(raw_results.get("distances"))
 
-    # Remove context labels
-    for i in range(1, 10):
-        context = context.replace(f"Context {i}:", "")
+        for i, doc in enumerate(documents):
+            normalized.append(
+                {
+                    "text": doc,
+                    "metadata": metadatas[i] if i < len(metadatas) else {},
+                    "score": distances[i] if i < len(distances) else None,
+                }
+            )
 
-    # Clean query words
-    stop_words = {
-        "what", "is", "a", "an", "the", "of", "to", "and", "or",
-        "in", "on", "for", "with", "by", "how", "why", "does", "do", "we"
-    }
+        return normalized
 
-    query_words = [
-        word.lower().strip(".,?!")
-        for word in query.split()
-        if word.lower().strip(".,?!") not in stop_words
-    ]
+    # Already contains retrieved context
+    if isinstance(raw_results, dict) and "retrieved_context" in raw_results:
+        return _normalize_results(raw_results["retrieved_context"])
 
-    lines = context.splitlines()
-    clean_lines = []
+    # Single dictionary result
+    if isinstance(raw_results, dict):
+        normalized.append(
+            {
+                "text": _extract_text(raw_results),
+                "metadata": _extract_metadata(raw_results),
+                "score": raw_results.get("score") or raw_results.get("distance"),
+            }
+        )
+        return normalized
 
-    for line in lines:
-        line = line.strip()
+    # List of strings/dicts/documents
+    if isinstance(raw_results, list):
+        for item in raw_results:
+            normalized.append(
+                {
+                    "text": _extract_text(item),
+                    "metadata": _extract_metadata(item),
+                    "score": item.get("score") if isinstance(item, dict) else None,
+                }
+            )
 
-        if not line:
-            continue
+        return normalized
 
-        # Keep headings, but remove markdown ##
-        if line.startswith("##"):
-            line = line.replace("##", "").strip()
+    # Fallback
+    normalized.append(
+        {
+            "text": str(raw_results),
+            "metadata": {},
+            "score": None,
+        }
+    )
 
-        clean_lines.append(line)
-
-    if not clean_lines:
-        return "I could not find enough information in the provided documents."
-
-    # First try: find the heading that best matches the question,
-    # then return the useful line after it.
-    for i, line in enumerate(clean_lines):
-        line_lower = line.lower()
-
-        matched_words = 0
-        for word in query_words:
-            if word in line_lower:
-                matched_words += 1
-
-        if matched_words >= 2 or (query_words and matched_words == len(query_words)):
-            # Look for the next real answer line after the heading
-            for next_line in clean_lines[i + 1:]:
-                next_lower = next_line.lower()
-
-                # Skip question headings
-                if next_line.endswith("?"):
-                    continue
-
-                if next_lower.startswith("what is"):
-                    continue
-
-                if next_lower.startswith("why do"):
-                    continue
-
-                if next_lower.startswith("how does"):
-                    continue
-
-                if next_lower.startswith("#"):
-                    continue
-
-                if len(next_line.split()) >= 5:
-                    return next_line
-
-    # Second try: find any non-heading sentence that matches the query words
-    best_line = None
-    best_score = 0
-
-    for line in clean_lines:
-        line_lower = line.lower()
-
-        # Do not return question headings
-        if line.endswith("?"):
-            continue
-
-        score = 0
-        for word in query_words:
-            if word in line_lower:
-                score += 1
-
-        if score > best_score:
-            best_score = score
-            best_line = line
-
-    if best_line and best_score > 0:
-        return best_line
-
-    return "I could not find enough information in the provided documents."
+    return normalized
 
 
-def evaluate_context_relevance(retrieved_chunks):
+def retrieve_context(user_question: str, top_k: int = 3) -> List[Dict]:
     """
-    Give a simple relevance label based on the top retrieval score.
+    Retrieve the most relevant document chunks for the question.
     """
 
-    if not retrieved_chunks:
-        return "No context found"
+    try:
+        raw_results = hybrid_retrieve(user_question, top_k=top_k)
+    except Exception:
+        raw_results = retrieve(user_question, top_k=top_k)
 
-    top_score = retrieved_chunks[0].get("final_score", 0)
-
-    if top_score >= 0.7:
-        return "High"
-    elif top_score >= 0.4:
-        return "Medium"
-    else:
-        return "Low"
+    return _normalize_results(raw_results)
 
 
-def rag_answer(query, top_k=3):
+def _clean_question(text: str) -> str:
     """
-    Full RAG pipeline:
+    Normalize a question for easier matching.
+    Example:
+    'WHAT IS RAG ?' -> 'what is rag'
+    """
+    text = text.lower()
+    text = re.sub(r"[^a-z0-9\s]", "", text)
+    text = re.sub(r"\s+", " ", text)
+    return text.strip()
 
-    Step 1: Retrieve relevant context
-    Step 2: Assemble prompt
-    Step 3: Send prompt to LLM/generator
-    Step 4: Return formatted answer
+
+def _is_question_line(line: str) -> bool:
+    """
+    Detect if a line looks like a new question.
+    """
+    line = line.strip().lower()
+
+    question_starts = (
+        "what ",
+        "why ",
+        "how ",
+        "when ",
+        "where ",
+        "who ",
+        "which ",
+        "can ",
+        "does ",
+        "do ",
+        "is ",
+        "are ",
+    )
+
+    return line.endswith("?") or line.startswith(question_starts)
+
+
+def _extract_direct_answer(user_question: str, retrieved_context: List[Dict]) -> str:
+    """
+    Try to extract a clean direct answer from the retrieved document chunks.
+    This is useful for FAQ-style documents.
     """
 
-    retrieved_chunks = hybrid_retrieve(query, top_k=top_k)
+    cleaned_user_question = _clean_question(user_question)
 
-    if not retrieved_chunks:
+    for source in retrieved_context:
+        text = source.get("text", "")
+        lines = [line.strip() for line in text.splitlines() if line.strip()]
+
+        for i, line in enumerate(lines):
+            cleaned_line = _clean_question(line)
+
+            # Find the matching question line inside the retrieved document
+            if cleaned_user_question == cleaned_line:
+                answer_lines = []
+
+                # Take the lines after the question until another question starts
+                for next_line in lines[i + 1:]:
+                    if _is_question_line(next_line):
+                        break
+
+                    answer_lines.append(next_line)
+
+                if answer_lines:
+                    return " ".join(answer_lines)
+
+    return ""
+
+
+def _fallback_answer(user_question: str, retrieved_context: List[Dict]) -> str:
+    """
+    If no exact FAQ-style answer is found, create a simple answer
+    using the most relevant retrieved source.
+    """
+
+    if not retrieved_context:
+        return "I could not find relevant information in the project documents."
+
+    first_source_text = retrieved_context[0].get("text", "")
+
+    return (
+        "Based on the retrieved project documents, the most relevant information is:\n\n"
+        f"{first_source_text}"
+    )
+
+
+def rag_answer(user_question: str) -> Dict:
+    """
+    Main RAG function.
+
+    Flow:
+    1. Receive user question
+    2. Retrieve relevant document chunks
+    3. Extract or generate a clean answer
+    4. Return answer and sources
+    """
+
+    retrieved_context = retrieve_context(user_question, top_k=3)
+
+    if not retrieved_context:
         return {
-            "query": query,
-            "answer": "I could not find enough information in the provided documents.",
-            "context_relevance": "No context found",
-            "response_quality": "Poor",
+            "answer": "I could not find relevant information in the project documents.",
             "retrieved_context": [],
-            "status": "no_context_found",
-            "timestamp": datetime.now().isoformat()
         }
 
-    context = build_context(retrieved_chunks)
-    prompt = build_prompt(query, context)
-    answer = simple_llm_response(prompt)
+    direct_answer = _extract_direct_answer(user_question, retrieved_context)
 
-    context_relevance = evaluate_context_relevance(retrieved_chunks)
-
-    if answer == "I could not find enough information in the provided documents.":
-        response_quality = "Poor"
-    elif context_relevance == "High":
-        response_quality = "Good"
+    if direct_answer:
+        final_answer = direct_answer
     else:
-        response_quality = "Needs review"
+        final_answer = _fallback_answer(user_question, retrieved_context)
 
     return {
-        "query": query,
-        "answer": answer,
-        "context_relevance": context_relevance,
-        "response_quality": response_quality,
-        "retrieved_context": retrieved_chunks,
-        "status": "success",
-        "timestamp": datetime.now().isoformat()
+        "answer": final_answer,
+        "retrieved_context": retrieved_context,
     }
-
-
-def save_results(results, output_file="rag_results.json"):
-    """
-    Save RAG test results into a JSON file.
-    """
-
-    with open(output_file, "w", encoding="utf-8") as file:
-        json.dump(results, file, indent=4, ensure_ascii=False)
-
-
-if __name__ == "__main__":
-    test_queries = [
-        "What is semantic search?",
-        "What is a vector store?",
-        "Why do we use chunking?",
-        "What does a vector store save?",
-        "How does semantic search find text?"
-    ]
-
-    all_results = []
-
-    for query in test_queries:
-        result = rag_answer(query)
-        all_results.append(result)
-
-        print("=" * 80)
-        print("QUESTION:")
-        print(result["query"])
-
-        print("\nANSWER:")
-        print(result["answer"])
-
-        print("\nCONTEXT RELEVANCE:")
-        print(result["context_relevance"])
-
-        print("\nRESPONSE QUALITY:")
-        print(result["response_quality"])
-
-        print("\nSTATUS:")
-        print(result["status"])
-        print()
-
-    save_results(all_results)
-
-    print("=" * 80)
-    print("RAG results saved to rag_results.json")
