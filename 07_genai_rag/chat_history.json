@@ -1,0 +1,178 @@
+[
+    {
+        "timestamp": "2026-07-01T12:17:03.695869",
+        "question": "What is semantic search?",
+        "context_aware_query": "What is semantic search?",
+        "answer": "Semantic search finds text based on meaning, not only exact keywords.",
+        "retrieved_sources": [
+            {
+                "id": "9621948d-8554-4e17-87e8-836803948d8e",
+                "content": "## What is semantic search?\n\nSemantic search finds text based on meaning, not only exact keywords.",
+                "metadata": {
+                    "source": "faq.md",
+                    "document_type": "FAQ",
+                    "chunk_number": 4
+                },
+                "embedding_score": 0.6865109997680288,
+                "keyword_score": 1.0,
+                "final_score": 0.78055769983762
+            },
+            {
+                "id": "d71fa854-d3a4-4d77-a42d-7481ec8bb6a8",
+                "content": "## What is a vector store?\n\nA vector store saves document chunks as embeddings so similar information can be searched quickly.\n\n## What is semantic search?",
+                "metadata": {
+                    "source": "faq.md",
+                    "document_type": "FAQ",
+                    "chunk_number": 3
+                },
+                "embedding_score": 0.6051604949591469,
+                "keyword_score": 1.0,
+                "final_score": 0.7236123464714028
+            },
+            {
+                "id": "b1b6a874-c5cc-497c-aa9b-712cf92ed96b",
+                "content": "## Why do we use chunking?\n\nChunking splits large documents into smaller parts so the system can retrieve only the most relevant information.\n\n## What is a vector store?",
+                "metadata": {
+                    "document_type": "FAQ",
+                    "chunk_number": 2,
+                    "source": "faq.md"
+                },
+                "embedding_score": 0.4203199230531574,
+                "keyword_score": 0,
+                "final_score": 0.29422394613721015
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-07-01T12:18:09.568761",
+        "question": "Explain it more simply.",
+        "context_aware_query": "Previous question: What is semantic search?\nPrevious answer: Semantic search finds text based on meaning, not only exact keywords.\n\nCurrent follow-up question: Explain it more simply.",
+        "answer": "Semantic search finds text based on meaning, not only exact keywords.",
+        "retrieved_sources": [
+            {
+                "id": "9621948d-8554-4e17-87e8-836803948d8e",
+                "content": "## What is semantic search?\n\nSemantic search finds text based on meaning, not only exact keywords.",
+                "metadata": {
+                    "document_type": "FAQ",
+                    "chunk_number": 4,
+                    "source": "faq.md"
+                },
+                "embedding_score": 0.787551874154051,
+                "keyword_score": 0.5217391304347826,
+                "final_score": 0.7078080510382705
+            },
+            {
+                "id": "d71fa854-d3a4-4d77-a42d-7481ec8bb6a8",
+                "content": "## What is a vector store?\n\nA vector store saves document chunks as embeddings so similar information can be searched quickly.\n\n## What is semantic search?",
+                "metadata": {
+                    "chunk_number": 3,
+                    "source": "faq.md",
+                    "document_type": "FAQ"
+                },
+                "embedding_score": 0.5464013047544737,
+                "keyword_score": 0.17391304347826086,
+                "final_score": 0.4346548263716098
+            },
+            {
+                "id": "b1b6a874-c5cc-497c-aa9b-712cf92ed96b",
+                "content": "## Why do we use chunking?\n\nChunking splits large documents into smaller parts so the system can retrieve only the most relevant information.\n\n## What is a vector store?",
+                "metadata": {
+                    "chunk_number": 2,
+                    "document_type": "FAQ",
+                    "source": "faq.md"
+                },
+                "embedding_score": 0.39114387255378524,
+                "keyword_score": 0.08695652173913043,
+                "final_score": 0.2998876673093888
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-07-01T12:18:44.344524",
+        "question": "Why do we use chunking?",
+        "context_aware_query": "Why do we use chunking?",
+        "answer": "Chunking splits large documents into smaller parts so the system can retrieve only the most relevant information.",
+        "retrieved_sources": [
+            {
+                "id": "b1b6a874-c5cc-497c-aa9b-712cf92ed96b",
+                "content": "## Why do we use chunking?\n\nChunking splits large documents into smaller parts so the system can retrieve only the most relevant information.\n\n## What is a vector store?",
+                "metadata": {
+                    "document_type": "FAQ",
+                    "chunk_number": 2,
+                    "source": "faq.md"
+                },
+                "embedding_score": 0.5340420952935667,
+                "keyword_score": 1.0,
+                "final_score": 0.6738294667054967
+            },
+            {
+                "id": "f65d9b8b-991f-4c80-aaca-dc12a92aaf74",
+                "content": "# Project FAQ\n\n## What is RAG?\n\nRAG stands for Retrieval-Augmented Generation. It allows an AI system to answer questions using external documents.\n\n## Why do we use chunking?",
+                "metadata": {
+                    "document_type": "FAQ",
+                    "source": "faq.md",
+                    "chunk_number": 1
+                },
+                "embedding_score": 0.5182720598888292,
+                "keyword_score": 1.0,
+                "final_score": 0.6627904419221804
+            },
+            {
+                "id": "d71fa854-d3a4-4d77-a42d-7481ec8bb6a8",
+                "content": "## What is a vector store?\n\nA vector store saves document chunks as embeddings so similar information can be searched quickly.\n\n## What is semantic search?",
+                "metadata": {
+                    "source": "faq.md",
+                    "chunk_number": 3,
+                    "document_type": "FAQ"
+                },
+                "embedding_score": 0.40029616333342943,
+                "keyword_score": 0,
+                "final_score": 0.28020731433340057
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-07-01T12:19:16.394881",
+        "question": "What is the capital of Japan?",
+        "context_aware_query": "What is the capital of Japan?",
+        "answer": "I could not find enough information in the provided documents.",
+        "retrieved_sources": [
+            {
+                "id": "9621948d-8554-4e17-87e8-836803948d8e",
+                "content": "## What is semantic search?\n\nSemantic search finds text based on meaning, not only exact keywords.",
+                "metadata": {
+                    "chunk_number": 4,
+                    "document_type": "FAQ",
+                    "source": "faq.md"
+                },
+                "embedding_score": 0.3444243512867185,
+                "keyword_score": 0,
+                "final_score": 0.24109704590070294
+            },
+            {
+                "id": "d71fa854-d3a4-4d77-a42d-7481ec8bb6a8",
+                "content": "## What is a vector store?\n\nA vector store saves document chunks as embeddings so similar information can be searched quickly.\n\n## What is semantic search?",
+                "metadata": {
+                    "chunk_number": 3,
+                    "document_type": "FAQ",
+                    "source": "faq.md"
+                },
+                "embedding_score": 0.3425403364279781,
+                "keyword_score": 0,
+                "final_score": 0.23977823549958466
+            },
+            {
+                "id": "b1b6a874-c5cc-497c-aa9b-712cf92ed96b",
+                "content": "## Why do we use chunking?\n\nChunking splits large documents into smaller parts so the system can retrieve only the most relevant information.\n\n## What is a vector store?",
+                "metadata": {
+                    "source": "faq.md",
+                    "document_type": "FAQ",
+                    "chunk_number": 2
+                },
+                "embedding_score": 0.33783498987877364,
+                "keyword_score": 0,
+                "final_score": 0.23648449291514154
+            }
+        ]
+    }
+]
