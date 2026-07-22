@@ -1,0 +1,106 @@
+2026-07-22 13:34:26,457 | INFO | Pipeline attempt 1 of 3.
+2026-07-22 13:34:26,457 | INFO | Starting ETL pipeline.
+2026-07-22 13:34:27,917 | INFO | Starting pipeline...
+Extracted customers: 100 rows
+Extracted orders: 200 rows
+Extracted order_items: 496 rows
+Extracted products: 30 rows
+Extracted transactions: 200 rows
+Transformed customers: 100 rows
+Transformed orders: 200 rows
+Transformed order_items: 496 rows
+Transformed products: 30 rows
+Transformed transactions: 200 rows
+Loaded customers: C:\Users\homam\OneDrive\Desktop\intern-bootcamp\data\processed\customers_clean.parquet
+Loaded orders: C:\Users\homam\OneDrive\Desktop\intern-bootcamp\data\processed\orders_clean.parquet
+Loaded order_items: C:\Users\homam\OneDrive\Desktop\intern-bootcamp\data\processed\order_items_clean.parquet
+Loaded products: C:\Users\homam\OneDrive\Desktop\intern-bootcamp\data\processed\products_clean.parquet
+Loaded transactions: C:\Users\homam\OneDrive\Desktop\intern-bootcamp\data\processed\transactions_clean.parquet
+Pipeline completed successfully.
+2026-07-22 13:34:27,918 | INFO | ETL pipeline completed successfully.
+2026-07-22 13:34:27,919 | INFO | Orchestration run finished successfully.
+2026-07-22 13:39:57,994 | INFO | Pipeline attempt 1 of 3.
+2026-07-22 13:39:57,994 | INFO | Starting ETL pipeline.
+2026-07-22 13:39:58,050 | ERROR | ETL pipeline failed.
+2026-07-22 13:39:58,050 | ERROR | Pipeline error: C:\Users\homam\OneDrive\Desktop\intern-bootcamp\.venv-1\Scripts\python.exe: can't open file 'C:\\Users\\homam\\OneDrive\\Desktop\\intern-bootcamp\\09_data_pipeline\\pipeline_missing.py': [Errno 2] No such file or directory
+2026-07-22 13:39:58,050 | WARNING | Pipeline failed. Retrying in 5 seconds.
+2026-07-22 13:40:03,051 | INFO | Pipeline attempt 2 of 3.
+2026-07-22 13:40:03,052 | INFO | Starting ETL pipeline.
+2026-07-22 13:40:03,116 | ERROR | ETL pipeline failed.
+2026-07-22 13:40:03,116 | ERROR | Pipeline error: C:\Users\homam\OneDrive\Desktop\intern-bootcamp\.venv-1\Scripts\python.exe: can't open file 'C:\\Users\\homam\\OneDrive\\Desktop\\intern-bootcamp\\09_data_pipeline\\pipeline_missing.py': [Errno 2] No such file or directory
+2026-07-22 13:40:03,116 | WARNING | Pipeline failed. Retrying in 5 seconds.
+2026-07-22 13:40:08,117 | INFO | Pipeline attempt 3 of 3.
+2026-07-22 13:40:08,117 | INFO | Starting ETL pipeline.
+2026-07-22 13:40:08,173 | ERROR | ETL pipeline failed.
+2026-07-22 13:40:08,173 | ERROR | Pipeline error: C:\Users\homam\OneDrive\Desktop\intern-bootcamp\.venv-1\Scripts\python.exe: can't open file 'C:\\Users\\homam\\OneDrive\\Desktop\\intern-bootcamp\\09_data_pipeline\\pipeline_missing.py': [Errno 2] No such file or directory
+2026-07-22 13:40:08,173 | ERROR | Pipeline failed after 3 attempts.
+2026-07-22 13:40:08,173 | ERROR | Orchestration run finished with failure.
+2026-07-22 13:44:27,181 | INFO | Pipeline scheduler started.
+2026-07-22 13:44:27,182 | INFO | Scheduled pipeline run triggered.
+2026-07-22 13:44:27,182 | INFO | Pipeline attempt 1 of 3.
+2026-07-22 13:44:27,182 | INFO | Starting ETL pipeline.
+2026-07-22 13:44:28,456 | INFO | Starting pipeline...
+Extracted customers: 100 rows
+Extracted orders: 200 rows
+Extracted order_items: 496 rows
+Extracted products: 30 rows
+Extracted transactions: 200 rows
+Transformed customers: 100 rows
+Transformed orders: 200 rows
+Transformed order_items: 496 rows
+Transformed products: 30 rows
+Transformed transactions: 200 rows
+Loaded customers: C:\Users\homam\OneDrive\Desktop\intern-bootcamp\data\processed\customers_clean.parquet
+Loaded orders: C:\Users\homam\OneDrive\Desktop\intern-bootcamp\data\processed\orders_clean.parquet
+Loaded order_items: C:\Users\homam\OneDrive\Desktop\intern-bootcamp\data\processed\order_items_clean.parquet
+Loaded products: C:\Users\homam\OneDrive\Desktop\intern-bootcamp\data\processed\products_clean.parquet
+Loaded transactions: C:\Users\homam\OneDrive\Desktop\intern-bootcamp\data\processed\transactions_clean.parquet
+Pipeline completed successfully.
+2026-07-22 13:44:28,456 | INFO | ETL pipeline completed successfully.
+2026-07-22 13:44:28,457 | INFO | Pipeline scheduled to run every 2 minutes.
+2026-07-22 14:33:03,692 | INFO | Pipeline scheduler started.
+2026-07-22 14:33:03,693 | INFO | Scheduled pipeline run triggered.
+2026-07-22 14:33:03,693 | INFO | Pipeline attempt 1 of 3.
+2026-07-22 14:33:03,693 | INFO | Starting ETL pipeline.
+2026-07-22 14:33:08,996 | INFO | Starting pipeline...
+Extracted customers: 100 rows
+Extracted orders: 200 rows
+Extracted order_items: 496 rows
+Extracted products: 30 rows
+Extracted transactions: 200 rows
+Transformed customers: 100 rows
+Transformed orders: 200 rows
+Transformed order_items: 496 rows
+Transformed products: 30 rows
+Transformed transactions: 200 rows
+Loaded customers: C:\Users\homam\OneDrive\Desktop\intern-bootcamp\data\processed\customers_clean.parquet
+Loaded orders: C:\Users\homam\OneDrive\Desktop\intern-bootcamp\data\processed\orders_clean.parquet
+Loaded order_items: C:\Users\homam\OneDrive\Desktop\intern-bootcamp\data\processed\order_items_clean.parquet
+Loaded products: C:\Users\homam\OneDrive\Desktop\intern-bootcamp\data\processed\products_clean.parquet
+Loaded transactions: C:\Users\homam\OneDrive\Desktop\intern-bootcamp\data\processed\transactions_clean.parquet
+Pipeline completed successfully.
+2026-07-22 14:33:08,996 | INFO | ETL pipeline completed successfully.
+2026-07-22 14:33:08,997 | INFO | Pipeline scheduled to run every 2 minutes.
+2026-07-22 14:34:07,249 | INFO | Pipeline scheduler started.
+2026-07-22 14:34:07,249 | INFO | Scheduled pipeline run triggered.
+2026-07-22 14:34:07,250 | INFO | Pipeline attempt 1 of 3.
+2026-07-22 14:34:07,250 | INFO | Starting ETL pipeline.
+2026-07-22 14:34:08,570 | INFO | Starting pipeline...
+Extracted customers: 100 rows
+Extracted orders: 200 rows
+Extracted order_items: 496 rows
+Extracted products: 30 rows
+Extracted transactions: 200 rows
+Transformed customers: 100 rows
+Transformed orders: 200 rows
+Transformed order_items: 496 rows
+Transformed products: 30 rows
+Transformed transactions: 200 rows
+Loaded customers: C:\Users\homam\OneDrive\Desktop\intern-bootcamp\data\processed\customers_clean.parquet
+Loaded orders: C:\Users\homam\OneDrive\Desktop\intern-bootcamp\data\processed\orders_clean.parquet
+Loaded order_items: C:\Users\homam\OneDrive\Desktop\intern-bootcamp\data\processed\order_items_clean.parquet
+Loaded products: C:\Users\homam\OneDrive\Desktop\intern-bootcamp\data\processed\products_clean.parquet
+Loaded transactions: C:\Users\homam\OneDrive\Desktop\intern-bootcamp\data\processed\transactions_clean.parquet
+Pipeline completed successfully.
+2026-07-22 14:34:08,570 | INFO | ETL pipeline completed successfully.
+2026-07-22 14:34:08,570 | INFO | Pipeline scheduled to run every 2 minutes.
