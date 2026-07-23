@@ -1,0 +1,45 @@
+dataset,stage,check_name,status,details
+customers,raw,Missing values,PASS,No missing values found.
+customers,raw,Duplicate rows,PASS,No duplicate rows found.
+customers,raw,Primary key validation,PASS,Column 'customer_id' is complete and unique.
+customers,cleaned,Missing values,PASS,No missing values found.
+customers,cleaned,Duplicate rows,PASS,No duplicate rows found.
+customers,cleaned,Numeric range check,PASS,No numeric business-value columns required validation.
+customers,cleaned,Primary key validation,PASS,Column 'customer_id' is complete and unique.
+customers,raw_to_cleaned,Row count comparison,PASS,"Raw rows: 100, cleaned rows: 100, removed rows: 0."
+orders,raw,Missing values,PASS,No missing values found.
+orders,raw,Duplicate rows,PASS,No duplicate rows found.
+orders,raw,Primary key validation,PASS,Column 'order_id' is complete and unique.
+orders,cleaned,Missing values,PASS,No missing values found.
+orders,cleaned,Duplicate rows,PASS,No duplicate rows found.
+orders,cleaned,Numeric range check,PASS,No numeric business-value columns required validation.
+orders,cleaned,Primary key validation,PASS,Column 'order_id' is complete and unique.
+orders,raw_to_cleaned,Row count comparison,PASS,"Raw rows: 200, cleaned rows: 200, removed rows: 0."
+order_items,raw,Missing values,PASS,No missing values found.
+order_items,raw,Duplicate rows,PASS,No duplicate rows found.
+order_items,raw,Primary key validation,PASS,Column 'order_item_id' is complete and unique.
+order_items,cleaned,Missing values,PASS,No missing values found.
+order_items,cleaned,Duplicate rows,PASS,No duplicate rows found.
+order_items,cleaned,Numeric range check,PASS,No invalid negative numeric values found.
+order_items,cleaned,Primary key validation,PASS,Column 'order_item_id' is complete and unique.
+order_items,raw_to_cleaned,Row count comparison,PASS,"Raw rows: 496, cleaned rows: 496, removed rows: 0."
+products,raw,Missing values,PASS,No missing values found.
+products,raw,Duplicate rows,PASS,No duplicate rows found.
+products,raw,Primary key validation,PASS,Column 'product_id' is complete and unique.
+products,cleaned,Missing values,PASS,No missing values found.
+products,cleaned,Duplicate rows,PASS,No duplicate rows found.
+products,cleaned,Numeric range check,PASS,No invalid negative numeric values found.
+products,cleaned,Primary key validation,PASS,Column 'product_id' is complete and unique.
+products,raw_to_cleaned,Row count comparison,PASS,"Raw rows: 30, cleaned rows: 30, removed rows: 0."
+transactions,raw,Missing values,PASS,No missing values found.
+transactions,raw,Duplicate rows,PASS,No duplicate rows found.
+transactions,raw,Primary key validation,PASS,Column 'transaction_id' is complete and unique.
+transactions,cleaned,Missing values,PASS,No missing values found.
+transactions,cleaned,Duplicate rows,PASS,No duplicate rows found.
+transactions,cleaned,Numeric range check,PASS,No invalid negative numeric values found.
+transactions,cleaned,Primary key validation,PASS,Column 'transaction_id' is complete and unique.
+transactions,raw_to_cleaned,Row count comparison,PASS,"Raw rows: 200, cleaned rows: 200, removed rows: 0."
+orders,cleaned,Orders customer integrity,PASS,All values in 'customer_id' exist in the parent column 'customer_id'.
+order_items,cleaned,Order items order integrity,PASS,All values in 'order_id' exist in the parent column 'order_id'.
+order_items,cleaned,Order items product integrity,PASS,All values in 'product_id' exist in the parent column 'product_id'.
+transactions,cleaned,Transactions order integrity,PASS,All values in 'order_id' exist in the parent column 'order_id'.
