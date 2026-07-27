@@ -1,67 +1,57 @@
 import time
 
-from extract import extract_data
-from transform import transform_data
-from load import load_data
+from config_loader import load_config
 from logger_config import setup_logger
+from pipeline import run_pipeline
 
 
 logger = setup_logger()
+config = load_config()
 
 
-def run_pipeline() -> None:
-    """Run the complete data pipeline in the correct order."""
+def run_with_retries() -> None:
+    """Run the full pipeline with configurable retry attempts."""
 
-    start_time = time.perf_counter()
-    logger.info("Pipeline started.")
+    max_retries = config["pipeline"]["retries"]
 
-    try:
-        raise RuntimeError("Test pipeline failure")
+    for attempt in range(1, max_retries + 1):
+        try:
+            logger.info(
+                "Pipeline attempt %d of %d.",
+                attempt,
+                max_retries,
+            )
 
-        extract_start = time.perf_counter()
-        extracted_data = extract_data()
-        extract_duration = time.perf_counter() - extract_start
+            run_pipeline()
 
-        logger.info(
-            "task=extract | status=success | duration_seconds=%.4f",
-            extract_duration,
-        )
+            logger.info(
+                "Pipeline orchestration completed successfully."
+            )
+            return
 
-        transform_start = time.perf_counter()
-        transformed_data = transform_data(extracted_data)
-        transform_duration = time.perf_counter() - transform_start
+        except Exception as error:
+            logger.warning(
+                "Pipeline attempt %d failed: %s",
+                attempt,
+                error,
+            )
 
-        logger.info(
-            "task=transform | status=success | duration_seconds=%.4f",
-            transform_duration,
-        )
+            if attempt == max_retries:
+                logger.error(
+                    "Pipeline failed after %d attempts.",
+                    max_retries,
+                )
+                raise
 
-        load_start = time.perf_counter()
-        load_data(transformed_data)
-        load_duration = time.perf_counter() - load_start
+            wait_seconds = attempt * 2
 
-        logger.info(
-            "task=load | status=success | duration_seconds=%.4f",
-            load_duration,
-        )
+            logger.info(
+                "Retrying pipeline in %d seconds.",
+                wait_seconds,
+            )
 
-    except Exception as error:
-        logger.exception("Pipeline failed: %s", error)
-
-        print(
-            "\nALERT: The data pipeline failed. "
-            "Check logs/pipeline.log for details."
-        )
-
-        raise
-
-    total_duration = time.perf_counter() - start_time
-
-    logger.info(
-        "Pipeline completed successfully in %.4f seconds.",
-        total_duration,
-    )
+            time.sleep(wait_seconds)
 
 
 if __name__ == "__main__":
-    run_pipeline()
+    run_with_retries()
