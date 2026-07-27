@@ -1,0 +1,5 @@
+stage,duration_seconds
+extract,0.0516
+transform,0.0804
+load,0.2106
+total,0.3426
