@@ -1,0 +1,23 @@
+pipeline:
+  name: week_10_capstone_pipeline
+  retries: 3
+
+paths:
+  raw_data: data/raw
+  processed_data: data/processed
+  logs: logs
+  validation_log: 09_capstone/pipeline/validation_log.csv
+  summary_report: 09_capstone/pipeline_run_summary.md
+
+datasets:
+  - customers
+  - orders
+  - order_items
+  - products
+  - transactions
+
+validation:
+  enabled: true
+
+reporting:
+  generate_summary: true
